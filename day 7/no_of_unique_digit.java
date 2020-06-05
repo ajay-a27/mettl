@@ -4,31 +4,28 @@ class UserMainCode
 {
 public int uniquedigitcount(int input1)
 {
-int dig=0;int temp=input1;
-		while(temp!=0)
+int size=0;
+		int temp=input1;
+		while(input1!=0)
 		{
-			dig+=1;
-			temp/=10;
-		}
-		int[] arr=new int[dig];
-		for(int i=0;i<dig;i++)
-		{
-			arr[i]=input1%10;
+			size++;
 			input1/=10;
 		}
-		for(int j=0;j<dig;j++)
+		int res=size;
+		int[] arr=new int[size];
+		for(int i=0;i<size;i++)
 		{
-			for(int k=0;k<dig;k++)
+			arr[i]=temp%10;
+			temp/=10;
+		}
+		Arrays.sort(arr);
+		for(int j=0;j<size-1;j++)
+		{
+			if(arr[j]==arr[j+1])
 			{
-				if(j!=k)
-				{
-					if(arr[k]==arr[j])
-					{
-						dig--;
-					}
-				}
+				res--;
 			}
 		}
-		return dig;
+		return res;
 	}
 }
